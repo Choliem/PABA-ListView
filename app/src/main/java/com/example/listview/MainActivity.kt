@@ -7,8 +7,10 @@ import android.view.MotionEvent
 import android.widget.Adapter
 import android.widget.ArrayAdapter
 import android.widget.Button
+import android.widget.EditText
 import android.widget.LinearLayout
 import android.widget.ListView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -121,6 +123,17 @@ class MainActivity : AppCompatActivity() {
         val layout = LinearLayout(this)
         layout.orientation = LinearLayout.VERTICAL
         layout.setPadding(50, 40, 50,10)
+
+        val tvOld = TextView(this)
+        tvOld.text = "Data lama: $oldValue"
+        tvOld.textSize = 16f
+
+        val etNew = EditText(this)
+        etNew.hint = "Masukkan Data Baru"
+        etNew.setText(oldValue)
+
+        layout.addView(tvOld)
+        layout.addView(etNew)
     }
 
 }
