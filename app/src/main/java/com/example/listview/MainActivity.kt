@@ -2,6 +2,7 @@ package com.example.listview
 
 import android.os.Bundle
 import android.widget.ArrayAdapter
+import android.widget.Button
 import android.widget.ListView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -27,6 +28,12 @@ class MainActivity : AppCompatActivity() {
 
         val _lv1 = findViewById<ListView>(R.id.lv1)
         _lv1.adapter = lvAdapter
+
+        val _btnTambah = findViewById<Button>(R.id.btnTambah)
+        _btnTambah.setOnClickListener {
+            var dtAkhir = Integer.parseInt(data.get(data.size - 1)) + 1
+            data.add("$dtAkhir")
+        }
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
