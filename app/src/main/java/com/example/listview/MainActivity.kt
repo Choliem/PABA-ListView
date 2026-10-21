@@ -40,6 +40,7 @@ class MainActivity : AppCompatActivity() {
             ).show()
         }
 
+
         val _btnTambah = findViewById<Button>(R.id.btnTambah)
         _btnTambah.setOnClickListener {
             var dtAkhir = Integer.parseInt(data.get(data.size - 1)) + 1
@@ -61,6 +62,11 @@ class MainActivity : AppCompatActivity() {
 
             }
         )
+
+        _lv1.setOnTouchListener { _, event ->
+            gestureDetector.onTouchEvent(event)
+            false
+        }
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
