@@ -88,7 +88,7 @@ class MainActivity : AppCompatActivity() {
         builder.setMessage("Pilih tindakan yang ingin dilakukan:")
 
         builder.setPositiveButton("Update") { _,_ ->
-
+            showUpdateDialog(position, selectedItem, data, adapter)
         }
         builder.setNegativeButton("Hapus") { _, _ ->
             data.removeAt(position)
