@@ -1,6 +1,8 @@
 package com.example.listview
 
 import android.os.Bundle
+import android.view.GestureDetector
+import android.view.MotionEvent
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.ListView
@@ -45,6 +47,21 @@ class MainActivity : AppCompatActivity() {
             lvAdapter.notifyDataSetChanged()
         }
 
+        val gestureDetector = GestureDetector(
+            this,
+            object : GestureDetector.SimpleOnGestureListener() {
+                override fun onDoubleTap(e: MotionEvent): Boolean {
+                    val position = _lv1.pointToPosition(e.x.toInt(), e.y.toInt())
+                    if (position != ListView.INVALID_POSITION){
+                        val selectedItem = data[position]
+                        showActionDialog(position, selectedItem, data, lvAdapter)
+                    }
+                return true
+                }
+
+            }
+        )
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
 
@@ -52,4 +69,12 @@ class MainActivity : AppCompatActivity() {
             insets
         }
     }
+    private fun showActionDialog(
+        position: Int,
+        selectedItem: String,
+        data: MutableList<String>,
+        lvAdapter: ArrayAdapter<String>
+    ) {
+    }
+    
 }
