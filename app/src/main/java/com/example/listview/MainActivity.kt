@@ -1,6 +1,7 @@
 package com.example.listview
 
 import android.os.Bundle
+import android.widget.ArrayAdapter
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -14,8 +15,18 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
+
+        data.addAll(listOf("1","2","3","4","5"))
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+
+            val lvAdapter : ArrayAdapter<String!> = ArrayAdapter(
+                this,
+                android.R.layout.simple_list_item_1,
+                data
+            )
+
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
