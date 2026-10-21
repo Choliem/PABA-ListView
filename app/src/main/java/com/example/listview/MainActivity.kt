@@ -18,14 +18,14 @@ class MainActivity : AppCompatActivity() {
 
         data.addAll(listOf("1","2","3","4","5"))
 
+        val lvAdapter  = ArrayAdapter(
+            this,
+            android.R.layout.simple_list_item_1,
+            data
+        )
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-
-            val lvAdapter : ArrayAdapter<String!> = ArrayAdapter(
-                this,
-                android.R.layout.simple_list_item_1,
-                data
-            )
 
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
