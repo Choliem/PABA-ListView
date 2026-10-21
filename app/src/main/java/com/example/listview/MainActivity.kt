@@ -7,12 +7,15 @@ import android.view.MotionEvent
 import android.widget.Adapter
 import android.widget.ArrayAdapter
 import android.widget.Button
+import android.widget.LinearLayout
 import android.widget.ListView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.LinearLayoutCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.setPadding
 
 class MainActivity : AppCompatActivity() {
 
@@ -112,7 +115,12 @@ class MainActivity : AppCompatActivity() {
         data: MutableList<String>,
         adapter: ArrayAdapter<String>
     ){
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("Update Data")
 
+        val layout = LinearLayout(this)
+        layout.orientation = LinearLayout.VERTICAL
+        layout.setPadding(50, 40, 50,10)
     }
 
 }
