@@ -33,6 +33,7 @@ class MainActivity : AppCompatActivity() {
         _btnTambah.setOnClickListener {
             var dtAkhir = Integer.parseInt(data.get(data.size - 1)) + 1
             data.add("$dtAkhir")
+            lvAdapter.notifyDataSetChanged()
         }
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
